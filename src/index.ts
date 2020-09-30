@@ -24,11 +24,11 @@ export default class DomBlockWatcher {
     public watch(fn: Fn): void {
         this.fn = fn;
         this.addDom();
-        window.onscroll = throttle(this.watchByScroll, 300);
+        window.onscroll = throttle(() => {this.watchByScroll()}, 300);
     }
 
     private addDom(): void {
-        const doms = document.querySelectorAll(this.classname);
+        const doms = document.querySelectorAll(this.classname) as NodeListOf<HTMLElement>;
         doms.forEach((dom, index) => {
             const clientHeight = dom.clientHeight;
             const offsetTop = dom.offsetTop + this.offsetTopNum;

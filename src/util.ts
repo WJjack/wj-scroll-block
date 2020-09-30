@@ -4,12 +4,12 @@
  * @param wait 
  */
 export function throttle(fn: Function, wait: number) {
-    let timer: number | null = null;
+    let timer: number = null;
     return function() {
         let context = this;
         let args = arguments;
         if(!timer) {
-            timer = setTimeout(() => {
+            timer = window.setTimeout(() => {
                 fn.apply(context, args);
                 timer = null;
             }, wait);

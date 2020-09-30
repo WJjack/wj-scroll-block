@@ -3,9 +3,13 @@
       "outDir": "./dist/",
       "sourceMap": true,
       "noImplicitAny": true,
-      "module": "es6",
+      "module": "commonjs",
       "target": "es5",
       "jsx": "react",
-      "allowJs": true
-    }
+      "allowJs": true,
+      "declaration": true,
+      "lib": ["es2018", "DOM"]
+    },
+    "include": ["./src/*"],
+    "exclude": ["./node_modules"]
   }
