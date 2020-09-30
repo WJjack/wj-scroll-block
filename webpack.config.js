@@ -1,8 +1,9 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -16,7 +17,12 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'wjScrollBlock',
+    libraryTarget: 'umd'
+  },
+  plugins: [
+    new CleanWebpackPlugin()
+  ]
 };
